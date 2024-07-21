@@ -5,7 +5,9 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class HttpClientSimple {
 
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -17,12 +19,12 @@ public class HttpClientSimple {
 
         HttpClient httpClient = HttpClient.newHttpClient(); // using the by default configuration
 
-        HttpRequest req = HttpRequest.newBuilder(URI.create("https://pluralsight.com"))
+        HttpRequest req = HttpRequest.newBuilder(URI.create("https://google.com"))
                 .GET()
                 .build();
 
         HttpResponse<String> res = httpClient.send(req, HttpResponse.BodyHandlers.ofString());
 
-        System.out.println(res.headers().map());
+        log.info("{}",res.headers().map());
     }
 }
