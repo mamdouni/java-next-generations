@@ -1,4 +1,4 @@
-package org.example.java.tutorial.java12;
+package org.example.java.tutorial.java12.api;
 
 import lombok.extern.slf4j.Slf4j;
 

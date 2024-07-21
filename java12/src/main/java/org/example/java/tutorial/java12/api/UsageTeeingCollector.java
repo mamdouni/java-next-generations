@@ -1,4 +1,4 @@
-package org.example.java.tutorial.java12;
+package org.example.java.tutorial.java12.api;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
