@@ -1,0 +1,6 @@
+
+Migration problems to java 9 : https://app.pluralsight.com/course-player?clipId=6650bc6f-5dc8-47f3-9b7d-826063905b18
+
+Java 9 Modularity : https://www.oracle.com/corporate/features/understanding-java-9-modules.html , https://www.baeldung.com/java-9-modularity
+
+Find more : create app with only your modules : https://app.pluralsight.com/course-player?clipId=12ebcae1-ebbb-42b6-911a-fa18a23b06b1
