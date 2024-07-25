@@ -72,3 +72,30 @@ The translateEscapes method is used to translate escape sequences in the string.
 ### String :: formatted
 
 The formatted method is used to format the string using the specified format string and arguments.
+
+## Socket API reimplementation
+
+The socket API has been reimplemented in Java 13. It is used to create a socket connection between the client and the server.
+The new implementation is more efficient and more secure.
+You can always use the old implementation by setting the system property `jdk.net.usePlainSocketImpl` to `true`. But it is not recommended.
+You can find more here :
+- https://app.pluralsight.com/ilx/video-courses/clips/e1a70726-15f3-43ba-90e6-ac527fa6e6b1
+
+## Class Data Sharing and Dynamic AppCDS Archives
+
+The class data sharing feature has been introduced in java 10. It is used to reduce the startup time of the application.
+The main idea is to create a shared archive that contains the class metadata and the bytecode of the classes.
+Then, the JVM can use this archive to load the classes instead of loading them from the jar files.
+This archive is created using the `-Xshare:dump` option. It can be used with the `-Xshare:on` option to enable the class data sharing.
+Multiple JVM instances can use the same archive to load the classes which reduces the memory footprint and the startup time.
+
+Dynamic AppCDS Archives is a new feature in Java 13. It is used to create the shared archive at runtime.
+It replaces the feature above and it is more efficient.
+You can simply create a shared archive using the `-XX:ArchiveClassesAtExit` option.
+And the use that archive using the `-XX:SharedArchiveFile` option.
+Here's an example :
+-![appcds-archives.png](images%2Fappcds-archives.png)
+The archive will not be created if the application does not exit normally.
+
+You can find more here :
+- https://app.pluralsight.com/ilx/video-courses/e1d5e19c-5eb8-44dc-be43-0e8a4c13c7fc/80b77662-db7d-4e91-8889-98071e4d9bda/f97e499b-626c-4b39-9b5e-4b6d52ec9b54
