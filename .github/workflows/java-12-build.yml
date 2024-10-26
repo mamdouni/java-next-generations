@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Java 12 CI with Maven
 run-name: Build the project by @${{ github.actor }}
 
 on:

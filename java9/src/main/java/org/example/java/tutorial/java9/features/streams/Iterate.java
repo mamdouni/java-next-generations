@@ -14,7 +14,7 @@ public class Iterate {
 		System.out.printf("%n	-------------------------%n");
 
 		// java 9 : public static<T> Stream<T> iterate(T seed, Predicate<? super T> hasNext, UnaryOperator<T> next)
-		// instead of using the limit you can now add a predicate to stop the stream from generating elements
+		// instead of using the limit you can now add a predicate to stop the stream from generating elements.
 		Stream.iterate(0, x -> x < 10, n -> n + 1)
 				.forEach(System.out::print);
 	}
