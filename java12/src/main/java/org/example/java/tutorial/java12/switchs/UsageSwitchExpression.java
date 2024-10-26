@@ -27,7 +27,6 @@ public class UsageSwitchExpression {
         // Switch expression is a new feature in Java 12 that is used to simplify the switch statement.
         // This must be used with --enable-preview flag as it is a preview feature.
         // It will be introduced in Java 13 as a standard feature.
-        /*
         monthName = switch (monthNumber) {
             case 1 -> "January";
             case 2 -> "February";
@@ -36,6 +35,5 @@ public class UsageSwitchExpression {
             default -> "Invalid month";
         };
         log.info("Month name : {}", monthName);
-         */
     }
 }
