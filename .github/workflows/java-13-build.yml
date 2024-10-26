@@ -2,8 +2,6 @@ name: Java CI with Maven
 run-name: Build the project by @${{ github.actor }}
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
     paths:
