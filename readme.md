@@ -29,6 +29,11 @@ Actually, we will only use them when they become permanent.
 
 - ![preview-features.png](images%2Fpreview-features.png)
 
+Because of preview features, the **mvn clean install** command on the global project will not work. That's why you need to build modules one by one using the java
+release that matches the module.
+Check the workflows directory to see how to build the modules.
+- [workflows](.github/workflows)
+
 ## Reference
 
 - [Java 9](https://app.pluralsight.com/library/courses/java-9-whats-new/table-of-contents)
