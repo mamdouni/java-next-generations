@@ -1,11 +1,12 @@
 package org.example.java.tutorial.java11.httpclient;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class HttpClientAsync {
@@ -27,6 +28,6 @@ public class HttpClientAsync {
 
         log.info("This is not blocking");
 
-        resFuture.join();   // wait for the google response before stopping the application
+        resFuture.join();   // wait for the google response before stopping the application.
     }
 }

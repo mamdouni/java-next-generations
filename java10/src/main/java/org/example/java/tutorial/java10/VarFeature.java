@@ -1,7 +1,5 @@
 package org.example.java.tutorial.java10;
 
-import org.example.java.tutorial.java10.Book;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -34,7 +32,7 @@ public class VarFeature {
 
 		 */
 		var list = List.of(1, 2.0, "3");
-		// be careful with types intersection as it will not generate a list of Object like the example above
+		// be careful with types intersection as it will not generate a list of Object like the example above.
 		Serializable serializable;
 		serializable = list.get(0);
 	}
