@@ -41,3 +41,4 @@ Check the workflows directory to see how to build the modules.
 - [Java 11](https://app.pluralsight.com/library/courses/java-11-whats-new/table-of-contents)
 - [Java 12](https://app.pluralsight.com/library/courses/java-12-whats-new/table-of-contents)
 - [Java 13](https://app.pluralsight.com/library/courses/whats-new-in-java-13/table-of-contents)
+- [Java 14](https://app.pluralsight.com/library/courses/java-14-whats-new/table-of-contents)
