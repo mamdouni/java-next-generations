@@ -65,7 +65,8 @@ It is used to create a class with a few lines of code. Useful for DTOs objects.
 Find more here :
 - https://app.pluralsight.com/ilx/video-courses/ebf4411f-5401-4515-b3bc-272b4451155a/feaf7082-bb95-4db7-87f0-a1f745cb4680/819f2893-0a79-479b-a9c4-a3579442c43d
 
-Here's the ChatGPT introduction if this feature.
+Here's the ChatGPT introduction for this feature.
+
 In Java, a record is a special kind of class introduced in Java 14 (as a preview feature) and officially added in Java 16. 
 It provides a simpler way to define classes intended to hold immutable data. Records are especially useful for creating data-carrying classes where you want to store values and don't need complex behavior.
 
@@ -111,11 +112,11 @@ Some improvements have been made in the JVM G1GC (G1 garbage collection) and the
 You can find them here :
 - https://app.pluralsight.com/ilx/video-courses/ebf4411f-5401-4515-b3bc-272b4451155a/2ec6636d-fb8e-467c-acb4-9d7dbfc75d0d/b4a35397-414b-441b-ac7a-708f9a7977f1
 
-** The CMS Garbage Collector (Concurrent Mark-Sweep) has been deprecated in Java 9 and removed in Java 14. **
+**The CMS Garbage Collector (Concurrent Mark-Sweep) has been deprecated in Java 9 and removed in Java 14**
 
-The Z Garbage Collector (ZGC) is a low-latency garbage collector introduced in Java 11. It is designed for applications requiring short pause times, even with large heaps (up to multiple terabytes). ZGC aims to keep garbage collection (GC) pauses under 10 milliseconds regardless of the heap size, making it suitable for applications where responsiveness is critical.
+- The Z Garbage Collector (ZGC) is a low-latency garbage collector introduced in Java 11. It is designed for applications requiring short pause times, even with large heaps (up to multiple terabytes). ZGC aims to keep garbage collection (GC) pauses under 10 milliseconds regardless of the heap size, making it suitable for applications where responsiveness is critical.
 
-The G1 Garbage Collector (Garbage-First GC or G1 GC) is a low-pause garbage collector in Java that was introduced as an alternative to the CMS (Concurrent Mark-Sweep) GC and became the default garbage collector in Java 9. G1 GC is designed to provide predictable pause times, making it suitable for applications that need both efficient memory management and moderate responsiveness. It achieves this by breaking the heap into regions, allowing for more flexible and targeted memory reclamation.
+- The G1 Garbage Collector (Garbage-First GC or G1 GC) is a low-pause garbage collector in Java that was introduced as an alternative to the CMS (Concurrent Mark-Sweep) GC and became the default garbage collector in Java 9. G1 GC is designed to provide predictable pause times, making it suitable for applications that need both efficient memory management and moderate responsiveness. It achieves this by breaking the heap into regions, allowing for more flexible and targeted memory reclamation.
 
 ## Low-Level Improvements
 
