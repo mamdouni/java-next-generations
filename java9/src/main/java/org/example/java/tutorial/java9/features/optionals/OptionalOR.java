@@ -1,8 +1,9 @@
 package org.example.java.tutorial.java9.features.optionals;
 
+import org.example.java.tutorial.java9.features.Book;
+
 import java.util.Optional;
 import java.util.Set;
-import org.example.java.tutorial.java9.features.Book;
 
 public class OptionalOR {
 

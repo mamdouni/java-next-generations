@@ -1,7 +1,8 @@
 package org.example.java.tutorial.java9.features.optionals;
 
-import java.util.Optional;
 import org.example.java.tutorial.java9.features.Book;
+
+import java.util.Optional;
 
 public class OptionalIfPresentOrElse {
 

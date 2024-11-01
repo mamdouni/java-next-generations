@@ -1,14 +1,11 @@
 package org.example.java.tutorial.java9.features.collectors;
 
-import java.util.Map;
-import java.util.Set;
 import org.example.java.tutorial.java9.features.Book;
 
-import static java.util.stream.Collectors.filtering;
-import static java.util.stream.Collectors.flatMapping;
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.mapping;
-import static java.util.stream.Collectors.toSet;
+import java.util.Map;
+import java.util.Set;
+
+import static java.util.stream.Collectors.*;
 
 public class NewCollectors {
 

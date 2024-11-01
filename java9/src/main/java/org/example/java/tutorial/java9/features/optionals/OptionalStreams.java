@@ -1,11 +1,12 @@
 package org.example.java.tutorial.java9.features.optionals;
 
+import org.example.java.tutorial.java9.features.Book;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.example.java.tutorial.java9.features.Book;
 
 public class OptionalStreams {
 

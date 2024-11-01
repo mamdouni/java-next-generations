@@ -1,10 +1,11 @@
 package org.example.java.tutorial.java12.api;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.text.CompactNumberFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class UsageCompactNumberFormat {

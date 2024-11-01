@@ -1,4 +1,4 @@
-package org.example.java.tutorial.java13;
+package org.example.java.tutorial.java15.java13;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,7 +24,7 @@ public class TextBlockDemo {
                 and it is a new feature in Java 13
         """;
         log.info(replaceWhiteSpaces(text));
-        // you can see heere the importance of the closing triple quotes in the indentation.
+        // you can see here the importance of the closing triple quotes in the indentation.
     }
 
     private static String replaceWhiteSpaces(String text) {

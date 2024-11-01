@@ -1,10 +1,11 @@
 package org.example.java.tutorial.java9.features.streams;
 
-import java.util.List;
-import java.util.stream.Stream;
 import org.example.java.tutorial.java9.features.Book;
 
-import static org.example.java.tutorial.java9.features.Book.*;
+import java.util.List;
+import java.util.stream.Stream;
+
+import static org.example.java.tutorial.java9.features.Book.getBook;
 
 public class OfNullable {
 

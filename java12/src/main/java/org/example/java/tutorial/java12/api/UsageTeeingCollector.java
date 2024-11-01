@@ -1,8 +1,9 @@
 package org.example.java.tutorial.java12.api;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class UsageTeeingCollector {
