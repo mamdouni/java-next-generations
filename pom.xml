@@ -16,6 +16,7 @@
         <module>java12</module>
         <module>java13</module>
         <module>java14</module>
+        <module>java15</module>
     </modules>
 
     <dependencies>

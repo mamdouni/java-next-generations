@@ -34,6 +34,9 @@ release that matches the module.
 Check the workflows directory to see how to build the modules.
 - [workflows](.github/workflows)
 
+With your IDE, you can run the examples one by one.
+If you want for example to run java 15 demos, you need to set the jdk to java 15 and enable preview features.
+
 ## Reference
 
 - [Java 9](https://app.pluralsight.com/library/courses/java-9-whats-new/table-of-contents)
