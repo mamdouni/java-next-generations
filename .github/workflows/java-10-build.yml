@@ -18,6 +18,6 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '10'
-          distribution: 'adopt'
+          distribution: 'zulu'
       - name: Build with Maven
         run: mvn -B package --file pom.xml -pl java10 -am
