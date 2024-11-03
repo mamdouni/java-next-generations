@@ -1,5 +1,6 @@
 package org.example.java.tutorial.java9.features.optionals;
 
+import lombok.extern.slf4j.Slf4j;
 import org.example.java.tutorial.java9.features.Book;
 
 import java.util.Comparator;
@@ -8,6 +9,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Slf4j
 public class OptionalStreams {
 
 	public static void main(String[] args) {
@@ -22,7 +24,7 @@ public class OptionalStreams {
 		// how can you turn it to a stream of integers ?
 		optionalStream
 				.flatMap(Optional::stream)
-				.forEach(System.out::println);	// shows 1 and 2
+				.forEach(s -> log.info("{}",s));	// shows 1 and 2
 
 		// can you find the maximum of authors in each book ?
 		List<String> authors = Book.getBooks()
@@ -30,6 +32,6 @@ public class OptionalStreams {
 				.map(b -> b.getAuthors().stream().max(Comparator.naturalOrder()))
 				.flatMap(Optional::stream)
 				.collect(Collectors.toList());
-		System.out.println(authors);
+		log.info("{}",authors);
 	}
 }

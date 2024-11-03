@@ -1,5 +1,7 @@
 package org.example.java.tutorial.java9.httpclient;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -7,6 +9,7 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
 
+@Slf4j
 public class AsyncExample {
 
 	public static void main(String[] args) {
@@ -25,8 +28,8 @@ public class AsyncExample {
 		CompletableFuture<HttpResponse<String>> response = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
 
 		response.thenAccept(res -> {
-			System.out.println("Version : " + res.version());
-			System.out.println(res.body());
+			log.info("Version : {}", res.version());
+			log.info(res.body());
 		});
 
 		response.join(); // wait for the response before terminating this program

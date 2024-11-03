@@ -1,10 +1,12 @@
 package org.example.java.tutorial.java9.features.optionals;
 
+import lombok.extern.slf4j.Slf4j;
 import org.example.java.tutorial.java9.features.Book;
 
 import java.util.Optional;
 import java.util.Set;
 
+@Slf4j
 public class OptionalOR {
 
 	public static void main(String[] args) {
@@ -19,7 +21,7 @@ public class OptionalOR {
 								localFallback.get()
 						)
 				);
-		System.out.println(bestBook);
+		log.info("{}",bestBook);
 		// well the code works fine but it's ugly as there is a lot of nested calls. We know that localFallback is not empty but imagine the opposite -> a null pointer will be thrown
 		// all that is because of the orElse which returns a Book and not an Optional
 
@@ -30,7 +32,7 @@ public class OptionalOR {
 				.or(() -> Optional.empty())
 				.or(() -> getExternalOffer())
 				.or(() -> localFallback);
-		System.out.println(orBook);
+		log.info("{}",orBook);
 	}
 
 	static Optional<Book> getBestOffer(){

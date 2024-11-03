@@ -1,9 +1,11 @@
 package org.example.java.tutorial.java9.features.optionals;
 
+import lombok.extern.slf4j.Slf4j;
 import org.example.java.tutorial.java9.features.Book;
 
 import java.util.Optional;
 
+@Slf4j
 public class OptionalIfPresentOrElse {
 
 	public static void main(String[] args) {
@@ -12,15 +14,14 @@ public class OptionalIfPresentOrElse {
 		Optional<Book> book = Optional.of(Book.getBook());
 		//book = Optional.empty();
 
-		book.ifPresent(System.out::println);
+		book.ifPresent(b -> log.info("{}",b));
 		if(book.isEmpty()){
-			System.out.printf("Noting here !!! %n");
+			log.info("{}","Noting here !!!");
 		}
-		System.out.printf("%n	-------------------------%n");
 
 		// using java 9 , you can pass the statement to be executed if the optional is empty
 		// public void ifPresentOrElse(Consumer<? super T> action, Runnable emptyAction) {
 		// If a value is present, performs the given action with the value, otherwise performs the given empty-based action.
-		book.ifPresentOrElse(System.out::println, () -> System.out.printf("Noting here !!! %n"));
+		book.ifPresentOrElse(b -> log.info("{}",b), () -> log.info("{}","Noting here !!! %n"));
 	}
 }

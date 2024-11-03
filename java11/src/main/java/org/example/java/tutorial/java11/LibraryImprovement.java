@@ -1,5 +1,7 @@
 package org.example.java.tutorial.java11;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -9,23 +11,23 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
+@Slf4j
 public class LibraryImprovement {
 
     public static void main(String[] args) throws IOException {
 
         // ### String class new methods
-        System.out.println("Repeat method : " + "na ".repeat(16).concat("Batman!"));
-        System.out.println("Is Blank method : " + "     \r\n".isBlank());
+        log.info("Repeat method : " + "na ".repeat(16).concat("Batman!"));
+        log.info("Is Blank method : " + "     \r\n".isBlank());
 
         // the strip method removes white characters even the blank unicode because it is based on the Character.isWhitespace('') method
         String whiteString =  "\n\t     This is a text     \u2005";
-        System.out.println("Strip method : " + "'" + whiteString.strip() + "'");
-        System.out.println("Trim method  : " + "'" + whiteString.trim() + "'");
+        log.info("Strip method : " + "'" + whiteString.strip() + "'");
+        log.info("Trim method  : " + "'" + whiteString.trim() + "'");
 
         // process multilines
         String multilines = "1\n2\n3";
-        multilines.lines().forEach(System.out::println);
-        System.out.println("------------------------");
+        multilines.lines().forEach(string -> log.info("{}",string));
 
         // ### Files class new methods
         if(false) {
@@ -40,8 +42,7 @@ public class LibraryImprovement {
 
         // ### Optional
         var opt = Optional.ofNullable(null);
-        System.out.println(opt.isEmpty());  // like isPresent, the isEmpty method has been added
-        System.out.println("------------------------");
+        log.info("{}",opt.isEmpty());  // like isPresent, the isEmpty method has been added
 
         // ### Predicate    :   Add of a static method to the Predicate interface
         Stream<String> strings = Stream.of("str", "ing", "");
@@ -54,10 +55,8 @@ public class LibraryImprovement {
         strings
                 .filter(Predicate.not(String::isBlank))
                 .forEach(System.out::println);
-        System.out.println("------------------------");
-
 
         // ### Unicode 10   :   upgrade from unicode 8 to unicode 10 , Adds 16.000+ new characters
-        System.out.println('\u20BF');   // Bitcoin character
+        log.info("{}",'\u20BF');   // Bitcoin character
     }
 }
