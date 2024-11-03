@@ -1,5 +1,7 @@
 package org.example.java.tutorial.java15.localrecords;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -7,15 +9,16 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Slf4j
 public class Main {
     
     public static void main(String[] args) {
 
         Stream<Employee> employees = getEmployees();
-        System.out.println(lowestPaidEmployeeFirstImplementation(employees));
+        log.info("{}",lowestPaidEmployeeFirstImplementation(employees));
 
         employees = getEmployees();
-        System.out.println(lowestPaidEmployeeRecordImplementation(employees));
+        log.info("{}",lowestPaidEmployeeRecordImplementation(employees));
     }
 
     private static Stream<Employee> getEmployees() {
