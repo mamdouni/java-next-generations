@@ -1,8 +1,11 @@
 package org.example.java.tutorial.java16;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.List;
 import java.util.stream.Stream;
 
+@Slf4j
 public class mapMulti {
     public static void main(String[] args) {
         /*
@@ -27,7 +30,7 @@ public class mapMulti {
                     }
                 })
                 .toList();
-        System.out.println("even numbers using flatMap: " + evenNumbers);
+        log.info("even numbers using flatMap: {}", evenNumbers);
 
         evenNumbers = Stream.of(1, 2, 3, 4, 5)
                 .<Integer>mapMulti((number, downstream) -> {
@@ -36,7 +39,7 @@ public class mapMulti {
                         downstream.accept(number);
                     }
                 }).toList();
-        System.out.println("even numbers using mapMulti: " + evenNumbers);
+        log.info("even numbers using mapMulti: {}", evenNumbers);
 
     }
 }
