@@ -1,8 +1,11 @@
 package org.example.java.tutorial.java9.features.streams;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.Set;
 import java.util.stream.Stream;
 
+@Slf4j
 public class TakeDropWhile {
 
 	public static void main(String[] args) {
@@ -14,21 +17,21 @@ public class TakeDropWhile {
 		*/
 		Stream.of(2, 4, 6, 8, 9, 10, 12)
 				.takeWhile(n -> n % 2 == 0)
-				.forEach(System.out::print);	// 10 and 12 will not be shown as the predicate at 9 returns false
-		System.out.printf("%n	-------------------------%n");
+				.forEach(n -> log.info("{}",n));	// 10 and 12 will not be shown as the predicate at 9 returns false
+
 		/*
 			dropWhile is essentially the opposite of takeWhile. Instead of taking elements from the stream until the first element which does not match the predicate,
 			dropWhile drops these elements and includes the remaining elements in the returned stream.
 		*/
 		Stream.of(2, 4, 6, 8, 9, 10, 12)
 				.dropWhile(n -> n % 2 == 0)
-				.forEach(System.out::print);	// 10 and 12 will not be removed and the predicate at 9 returns false
-		System.out.printf("%n	-------------------------%n");
+				.forEach(n -> log.info("{}",n));	// 10 and 12 will not be removed and the predicate at 9 returns false
+		log.info("%n	-------------------------%n");
 
 		// Be careful ; takesWhile and dropWile works on ordered elements. If the element are unordered than the operation will be nondeterministic
 		Set.of(2, 4, 6, 3, 8)
 				.stream()
 				.takeWhile(n -> n % 2 == 0)
-				.forEach(System.out::print);	// should return 2 , 4 and 6. Run the code and check if the result is different each time
+				.forEach(n -> log.info("{}",n));	// should return 2 , 4 and 6. Run the code and check if the result is different each time
 	}
 }

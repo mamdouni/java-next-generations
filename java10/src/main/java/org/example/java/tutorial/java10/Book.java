@@ -22,6 +22,6 @@ public class Book {
 
 	public static final List<Book> getBooks(){
 
-		return List.of(new Book("Kubernetes In Action", Set.of("Marko Luksa", "Dylan scott"), 45.99), new Book("Kafka In Action", Set.of("Dave Klein"), 26.99));
+		return List.of(new Book("Kubernetes In Action ", Set.of("Marko Luksa", "Dylan scott"), 45.99), new Book("Kafka In Action", Set.of("Dave Klein"), 26.99));
 	}
 }

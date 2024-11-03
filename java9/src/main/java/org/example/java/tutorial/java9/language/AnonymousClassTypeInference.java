@@ -1,7 +1,10 @@
 package org.example.java.tutorial.java9.language;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 
+@Slf4j
 public class AnonymousClassTypeInference {
 
 	public static void main(String[] args) {
@@ -16,7 +19,7 @@ public class AnonymousClassTypeInference {
 			// for anonymous classes we can't use the diamond operator in java 8 , we have to specify the type
 			@Override
 			public boolean add(String s) {
-				System.out.println("Adding ; " + s);
+				log.info("Adding ; {}",  s);
 				return super.add(s);
 			}
 		};
@@ -27,7 +30,7 @@ public class AnonymousClassTypeInference {
 			// in java 9 we can use diamond operator even in the anonymous classes
 			@Override
 			public boolean add(String s) {
-				System.out.println("Adding ; " + s);
+				log.info("Adding ; {}",  s);
 				return super.add(s);
 			}
 		};

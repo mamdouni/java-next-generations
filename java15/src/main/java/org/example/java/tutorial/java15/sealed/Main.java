@@ -1,5 +1,8 @@
 package org.example.java.tutorial.java15.sealed;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class Main {
 
     public static void main(String[] args) {
@@ -10,7 +13,7 @@ public class Main {
                 )
         );
 
-        System.out.printf("%s = %d%n", e, e.eval());
+        log.info("{} = {}", e, e.eval());
     }
 }
 
