@@ -53,6 +53,7 @@ public class SwitchPatternMatchingMain {
             case Integer i -> i.doubleValue();
             case Float f -> f.doubleValue();
             case String s -> Double.parseDouble(s);
+            case null -> 1d;
             default -> 0d;
         };
         // In earlier versions of Java, the selector expression was limited to only a few types. However, with type patterns, the switch selector expression can be of any type.
