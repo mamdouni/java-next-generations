@@ -4,7 +4,7 @@
 
 ### Removed Ports
 
-Starting from Java 15, the following ports have been removed :
+Starting from Java 15, the following ports have been removed:
 - The support for Solaris operating system
 - The support for SPARC processors architecture
 

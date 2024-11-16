@@ -3,7 +3,7 @@
 ## Introduction
 
 Java 16 is the latest release of the Java programming language. It was released on March 16, 2021.
-Here are some of the changes and improvements in Java 16:
+Here are some of the changes and improvements in Java 16 :
 - migrated to Git from Mercurial and hosting OpenJDK on GitHub (https://github.com/openjdk). Now developers can contribute to the OpenJDK project more easily.
 - improvements in the stream API, DateTimeFormatter, pattern matching, and garbage collection.
 

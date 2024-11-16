@@ -6,7 +6,7 @@ Java 17, released on September 14, 2021, is a significant release for the Java e
 This means it will receive extended support and updates, making it ideal for production use in enterprises. 
 Java 17 introduces several language enhancements, library updates, new features, and API changes.
 
-Here are the key features and changes introduced in Java 17:
+Here are the key features and changes introduced in Java 17.
 
 ## Removal
 

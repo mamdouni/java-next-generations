@@ -1,6 +1,6 @@
 # Java 9
 
-Check the new features here :
+Check the new features here:
 - [java9](src%2Fmain%2Fjava%2Forg%2Fexample%2Fjava%2Ftutorial%2Fjava9)
 
 Check features resources here :

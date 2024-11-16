@@ -8,7 +8,7 @@ You can find the improvements here :
 
 ## Security
 
-These classes has been moved to another package. From :
+These classes has been moved to another package from :
 - javax.security.cert.Certificate
 - javax.security.cert.X509Certificate
 
