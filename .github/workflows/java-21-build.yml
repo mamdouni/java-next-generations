@@ -1,11 +1,11 @@
-name: Java 18 CI with Maven
-run-name: Build the project Java 18 by @${{ github.actor }}
+name: Java 21 CI with Maven
+run-name: Build the project Java 21 by @${{ github.actor }}
 
 on:
   pull_request:
     branches: [ main ]
     paths:
-      - 'java18/**'
+      - 'java21/**'
 
 jobs:
   build:
@@ -14,10 +14,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 18
+      - name: Set up JDK 21
         uses: actions/setup-java@v2
         with:
-          java-version: '18'
+          java-version: '21'
           distribution: 'adopt'
       - name: Build with Maven
-        run: mvn -B package --file pom.xml -pl java18 -am
+        run: mvn -B package --file pom.xml -pl java21 -am

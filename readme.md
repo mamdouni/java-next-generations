@@ -58,3 +58,4 @@ If you want for example to run java 15 demos, you need to set the jdk to java 15
 - [Java 15](https://app.pluralsight.com/library/courses/java-15-whats-new/table-of-contents)
 - [Java 16](https://app.pluralsight.com/library/courses/java-16-whats-new/table-of-contents)
 - [Java 18 & 19](https://app.pluralsight.com/library/courses/java-se-18-whats-new/table-of-contents)
+- [Java 21](https://app.pluralsight.com/library/courses/whats-new-java-21/table-of-contents)

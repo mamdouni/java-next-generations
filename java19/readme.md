@@ -4,7 +4,7 @@
 
 JDK 19 is the open-source reference implementation of version 19 of the Java SE Platform, as specified by by JSR 394 in the Java Community Process. JDK 19 reached General Availability on 20 September 2022.
 
-You can check the differences between Java 19 and Java 18 here : 
+You can check the differences between Java 19 and Java 18 here: 
 - https://javaalmanac.io/jdk/19/apidiff/18/
 
 ## Removal

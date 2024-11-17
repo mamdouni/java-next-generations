@@ -4,7 +4,7 @@
 
 ### Removed Packages
 
-Here's some packages that have been removed in Java 14 (after being deprecated in older versions) :
+Here's some packages that have been removed in Java 14 (after being deprecated in older versions):
 - java.security.acl
 - java.util.jar.Pack200
 

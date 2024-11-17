@@ -4,7 +4,7 @@
 
 Java 18 was released on March 22, 2022.
 
-You can check the differences between Java 17 and Java 18 here : 
+You can check the differences between Java 17 and Java 18 here: 
 - https://javaalmanac.io/jdk/18/apidiff/17/
 
 ## Language Enhancements

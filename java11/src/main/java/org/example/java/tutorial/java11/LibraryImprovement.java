@@ -45,7 +45,7 @@ public class LibraryImprovement {
         log.info("{}",opt.isEmpty());  // like isPresent, the isEmpty method has been added
 
         // ### Predicate    :   Add of a static method to the Predicate interface
-        Stream<String> strings = Stream.of("str", "ing", "");
+        Stream<String> strings = Stream.of("stri", "ng", "");
         // Before
         strings
                 .filter(((Predicate<String>)(String::isBlank)).negate())

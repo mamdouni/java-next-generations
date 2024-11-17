@@ -1,5 +1,5 @@
 name: Java 13 CI with Maven
-run-name: Build the project by @${{ github.actor }}
+run-name: Build the project Java 13 by @${{ github.actor }}
 
 on:
   pull_request:

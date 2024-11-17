@@ -7,7 +7,7 @@ While it did not bring revolutionary changes, it continued to refine and enhance
 with a strong focus on preview features, incubator modules, and improvements to the language, runtime, and tooling. 
 Below is a summary of the features added or improved in Java 20.
 
-You can check the differences between Java 20 and Java 19 here : 
+You can check the differences between Java 20 and Java 19 here: 
 - https://javaalmanac.io/jdk/20/apidiff/19/
 
 ## Removed or Deprecated Features
