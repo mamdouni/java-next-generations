@@ -56,116 +56,146 @@ If you use URI.create, it will eagerly validate the URL that you pass in and it 
 
 ## Language Enhancements
 
-### Record Patterns (Second Preview) [JEP 432]
+### Api Updates
 
-- **Purpose**: Enhances pattern matching by introducing record patterns, enabling decomposition of record objects.
-- **Enhancements in Java 20**:
-  - Record patterns can be used in switch expressions to match record instances.
-  - Simplifies code by providing a concise and expressive way to destructure record objects.
-  - Improves integration with pattern matching for switch.
-  - Refined syntax and matching rules for better expressiveness.
+Some API updates were made in Java 21 on :
+- The String Builder
+- Emojis characters support
+- Math.clam method
+- and more
 
-This feature is previewed in Java 20, allowing developers to experiment with record patterns and provide feedback before finalizing the feature.
-It will be a standard feature in a future release (java 21).
+You can find examples here :
+- [java21](src/main/java/org/example/java/tutorial/java21)
 
-- **Example**:
+and look here for more details :
+- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/18afca11-b3cf-4e3d-a531-75698d33c667/4908d2f8-2b16-4f4c-af1e-bc9b08a5ad37
+
+### Scoped Values (Finalized) [JEP 439]
+
+**Purpose:** Provide a lightweight, thread-local alternative for sharing immutable data within a task or thread.
+
 ```java
-record Point(int x, int y) {}
+import jdk.incubator.concurrent.ScopedValue;
 
-static void printPoint(Object obj) {
-    if (obj instanceof Point(int x, int y)) {
-        System.out.println("x: " + x + ", y: " + y);
-    }
-}
+ScopedValue<String> userId = ScopedValue.newInstance();
 
+ScopedValue.where(userId, "12345").run(() -> {
+        System.out.println("User ID: " + userId.get());
+        });
 ```
+
+**Benefits:**
+- Simplifies thread-local-like behavior.
+- Better suited for modern, multi-threaded applications.
+
+### Sequenced Collections [JEP 431]
+
+**Purpose**: Sequenced collections provide a more efficient way to manage ordered collections of elements.
+Introduces a new interface, SequencedCollection, implemented by List, Set, and Map.
+Provides methods for first and last elements in collections with a defined encounter order.
+
+Java provides multiple collection types, such as List, Set, and Map, each with its own characteristics and use cases.
+Even if the collections are ordered, there is no standard way to access the first or last element in a collection.
+
+You can understand this with the following demo :
+- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/18afca11-b3cf-4e3d-a531-75698d33c667/712cabf5-f748-47d0-aca0-70978d229d33
+
+The SequencedCollection interface introduces methods to access the first and last elements in a collection with a defined encounter order.
+
+```java
+SequencedSet<String> set = SequencedSet.of("A", "B", "C");
+System.out.println(set.getFirst()); // "A"
+System.out.println(set.getLast());  // "C"
+```
+
+**Key Methods:**
+- first() and last() for retrieval.
+- reversed() for reverse order.
+
+And you can check here the added interfaces and the hierarchy between them and the Collection interface:
+- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/18afca11-b3cf-4e3d-a531-75698d33c667/3e0fcb50-eb32-46d6-9ceb-61645d4baa8c
+
+### Pattern Matching for switch (Finalized) [JEP 441]
+
+Pattern matching for switch is now **a standard feature**.
+Enables concise and expressive code when working with different types and patterns.
+Supports exhaustive and null-safe handling.
+
+Check this demo to know more about checks and exhaustive type patterns of sealed classes :
+- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/16b0bc4f-ef2b-421d-9fd6-de3032fb3bbd/3ac60e0c-0d9c-4da9-bedc-0937b2e730da
+
+And this one to know more about how to use records with the new switch expression :
+- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/16b0bc4f-ef2b-421d-9fd6-de3032fb3bbd/788aeb66-b411-4a7c-aaaa-7e43dc98750b
+
+And a demo here : 
+- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/16b0bc4f-ef2b-421d-9fd6-de3032fb3bbd/a59aad5e-ec59-4bfc-8b29-7fcbd25f9eb7
 
 ### Virtual Threads (Second Preview) [JEP 436]
 
-**Purpose**: Virtual threads make high-throughput concurrent programming more accessible and scalable.
+Virtual threads are now standard in Java 21, simplifying concurrent programming by enabling lightweight threads.
 
-**Key Features in Java 20**:
-- Simplifies thread creation and management.
-- Improves the scalability of applications handling many simultaneous connections.
-Example:
-```java
-try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
-    executor.submit(() -> System.out.println("Hello from virtual thread!"));
-}
-```
+**Purpose:** Improve scalability of applications with many concurrent tasks.
 
-## Incubator Modules
+You can check here how the threads works in java until now and what are the downsides of using them :
+- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/245f59b2-6974-4f39-b4a8-294837136b5f/e6838d1a-4ca2-4120-b448-4574cdf89194
 
-An incubator module in Java is a special type of module designed to introduce new APIs and features into 
-the Java Development Kit (JDK) for experimental purposes. 
-These modules allow developers to try out new features and provide feedback before they are finalized and 
-included as standard features in future Java releases.
+The same course will show you :
+- The alternative solutions for non-blocking code
 
-### Key Characteristics of Incubator Modules
+What you need to know about asynchronous programming in Java :
+- Hard to code
+- Hard to read
+- Hard to debug
+- Hard to test
+- Hard to maintain
+- Provided by third-party libraries
 
-**Experimental Nature:**
-- Incubator modules contain APIs or functionality that are not yet ready for general availability.
-- They are subject to change, removal, or refinement based on feedback from developers and practical usage.
+To resume: 
 
-**Modular Design:**
-- Incubator modules are Java modules (introduced with the module system in Java 9).
-- They reside in the **jdk.incubator** namespace to clearly distinguish them from stable modules.
+Virtual threads are lightweight threads that are managed by the JVM, which means that they are not managed by the operating system.
+They are more efficient than the traditional threads because they are not managed by the operating system, so they are not as expensive to create and to run.
+They are also more scalable because you can create millions of them without running out of memory. They are also more predictable because they are not managed by the operating system, so you don't have to worry about the operating system scheduling them.
+They are also more flexible because you can create them in a way that is similar to creating a regular thread, so you don't have to learn a new API.
 
-**Not Enabled by Default:**
-- To use an incubator module, you must explicitly add it to your project's classpath or module path.
-- For example, you might need to use a command-line option like --add-modules.
-  
-**Feedback-Oriented:**
-- The main purpose of incubator modules is to gather real-world feedback from developers.
-- This feedback helps refine the feature or API before it becomes a standard part of the JDK.
+They are not faster than the traditional threads, but they are more efficient, more scalable, more predictable, and more flexible.
+When creating a virtual thread, it will be mounted on a **Platform Thread**. If it is blocked, it will be unmounted and the platform thread will be reused by another virtual thread.
+It will only be mounted again to continue running when blocking call completes.
+The **Platform Thread** can handle multiple virtual threads on the same time. The number of platform threads is by default the number of available CPU cores.
 
-**No Backward Compatibility Promise:**
-- APIs in incubator modules are not guaranteed to remain the same in subsequent Java versions.
-- They may be removed or heavily modified based on developer feedback.
+You can check this to know more about the new virtual threads :
+- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/245f59b2-6974-4f39-b4a8-294837136b5f/6c1d0e49-c409-4128-99be-fb0848fcf8e0
 
-### Example: Foreign Function & Memory API in Incubator
+This also means that you should use virtual threads only for tasks where it would perform a healthy amount of blocking operations mixed with CPU heavy operations.
+If all virtual threads **would only run CPU‑intensive, non‑blocking codes,** they would never give up the underlying platform thread and there would be no benefit in using virtual threads. 
+So virtual threads are not magical, faster threads. They do offer a simple model for rising applications with a lot of blocking operations 
+(for example, a web server serving requests and doing calls to other web services in the database to fulfill these requests).
 
-A practical example of an incubator module is the Foreign Function & Memory API, which provides a way for Java programs to interact with native code and memory outside the JVM. 
-This API has been delivered as an incubator module in multiple Java versions (e.g., Java 17, Java 18, Java 19, and Java 20).
+You can check here how to create a virtual thread :
+- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/245f59b2-6974-4f39-b4a8-294837136b5f/1ab51a4b-86b5-457c-91af-595f880dad39
 
-To use this API in Java 20, you would do the following:
-
-- Compile and Run with Incubator Module: Add the jdk.incubator.foreign module to your project using the --add-modules flag:
-```shell
-javac --add-modules jdk.incubator.foreign MyApp.java
-java --add-modules jdk.incubator.foreign MyApp
-```
-
-- Here's an example of working with the Foreign Function & Memory API:
-```java
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-public class ForeignMemoryExample {
-    public static void main(String[] args) {
-        try (MemorySegment segment = MemorySegment.allocateNative(4)) {
-            segment.set(ValueLayout.JAVA_INT, 0, 42);
-            int value = segment.get(ValueLayout.JAVA_INT, 0);
-            System.out.println("Value: " + value); // Output: 42
-        }
-    }
-}
-```
-
-### Difference Between Incubator Modules and Preview Features
-|Aspect|Incubator Modules|Preview Features|
-|:----|:----|:----|
-|Scope|Focused on APIs and libraries.|Covers language features, APIs, and JVM enhancements.|
-|Namespace|Delivered under the jdk.incubator namespace.|Delivered in standard packages (e.g., java.lang).|
-|Enablement|Requires explicit --add-modules to use.|Requires --enable-preview flag to use.|
-|Stability|APIs can change or be removed entirely.|Features are more stable but still subject to change.|
-|Examples|Foreign Function & Memory API, Vector API.|Pattern Matching for switch, Virtual|
+And here is some advice about using virtual threads (like not using Pooling or the use of synchronized keyword or File I/O) :
+- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/245f59b2-6974-4f39-b4a8-294837136b5f/7790dbfb-f1d6-4970-a6cf-5f2973af5fa6
 
 ## Conclusion
-Java 20 is primarily a refinement release that builds on preview and incubator features from Java 19, emphasizing the following areas:
 
-- **Developer Productivity:** Enhancements to pattern matching, records, and concurrency tools.
-- **Performance and Scalability:** Virtual threads and structured concurrency improve the scalability of modern applications.
-- **Native Interoperability:** Continued evolution of the Foreign Function & Memory API for easier native code integration.
+Java 21 is an LTS (Long-Term Support) release, which means it will receive extended updates and support (similar to Java 17 and 11).
 
-Since many features are still in preview or incubation, they are not enabled by default and require compiler flags like --enable-preview for use.
+**Developer Productivity:** Finalization of major features like virtual threads, pattern matching, and record patterns make the language more expressive and scalable.
+
+**Performance and Scalability:** With virtual threads and garbage collector enhancements, Java 21 is better suited for modern, high-throughput applications.
+
+**Summary Table of Features in Java 21**
+
+|Feature|Status|Description|
+|:----|:----|:----|
+|Pattern Matching for switch|Finalized (JEP 441)|Adds powerful and concise pattern matching for switch.|
+|Record Patterns|Finalized (JEP 440)|Decompose records with pattern matching.|
+|Virtual Threads|Finalized (JEP 444)|Lightweight threads for high-concurrency applications.|
+|Sequenced Collections|Standard (JEP 431)|Adds first(), last(), and reversed() to ordered collections.|
+|Foreign Function & Memory API|Finalized (JEP 442)|Interact with native memory and code efficiently.|
+|String Templates|Preview (JEP 430)|Simplifies dynamic string creation using templates.|
+|Scoped Values|Finalized (JEP 439)|Lightweight alternative to thread-local storage.|
+|Structured Concurrency|Incubator (JEP 443)|Simplifies multi-threaded task management.|
+
+Java 21 cements its position as a major step forward for developers with modernized concurrency tools, powerful pattern matching, and finalized experimental features. 
+Its LTS status ensures it will be widely adopted and supported for years to come.
