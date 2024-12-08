@@ -47,114 +47,109 @@ Benefits:
 
 - https://openjdk.org/jeps/453
 
-### Sequenced Collections [JEP 431]
+You can find more here :
+- https://www.youtube.com/watch?v=9O7ukS-DHV0
 
-**Purpose**: Sequenced collections provide a more efficient way to manage ordered collections of elements.
-Introduces a new interface, SequencedCollection, implemented by List, Set, and Map.
-Provides methods for first and last elements in collections with a defined encounter order.
+You can create your own custom scope to manage the tasks in a structured way. Look at this demo :
+- https://youtu.be/2nOj8MKHvmw?t=1027
 
-Java provides multiple collection types, such as List, Set, and Map, each with its own characteristics and use cases.
-Even if the collections are ordered, there is no standard way to access the first or last element in a collection.
 
-You can understand this with the following demo :
-- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/18afca11-b3cf-4e3d-a531-75698d33c667/712cabf5-f748-47d0-aca0-70978d229d33
+### Statements Before Super [JEP 447]
 
-The SequencedCollection interface introduces methods to access the first and last elements in a collection with a defined encounter order.
+Prior to JDK 22, code execution within a constructor had to occur after the super call, 
+which initializes the parent class.
+This restriction often forced developers
+to place initialization logic within the parent class constructor or use instance initialization blocks,
+which could lead to code duplication or awkward workarounds.
+Same case for this() call, it should be the first statement in the constructor in previous versions.
 
+So previously, Java required that super() or this() be the first statement in a constructor, which limited the ability to perform certain initialization tasks before the parent constructor was called.
+
+Why Was This Feature Introduced?
+- Initialization Logic: In many scenarios, you might need to compute values or perform checks before passing parameters to a superclass constructor.
+- Readability and Maintainability: The restriction of having super() or this() as the first statement often forced developers to refactor initialization logic into static methods or other constructs, which could make the code harder to follow.
+- Flexibility: This feature simplifies constructor code by allowing local initialization logic to coexist with constructor chaining.
+
+Example Before Java 22 :
 ```java
-SequencedSet<String> set = SequencedSet.of("A", "B", "C");
-System.out.println(set.getFirst()); // "A"
-System.out.println(set.getLast());  // "C"
+public class Shape {
+  private String color;
+
+  public Shape(String color) {
+    this.color = color;
+  }
+}
+
+public class Rectangle extends Shape {
+  private int width;
+  private int height;
+
+  // Prior to JDK 22, initialization logic had to go here
+  public Rectangle(int width, int height, String color) {
+    super(color); // Call to superclass constructor
+    this.width = width;
+    this.height = height;
+  }
+}
 ```
 
-**Key Methods:**
-- first() and last() for retrieval.
-- reversed() for reverse order.
+With Statements Before super() (Java 22) :
+```java
+public class Rectangle extends Shape {
+  private int width;
+  private int height;
 
-And you can check here the added interfaces and the hierarchy between them and the Collection interface:
-- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/18afca11-b3cf-4e3d-a531-75698d33c667/3e0fcb50-eb32-46d6-9ceb-61645d4baa8c
+  public Rectangle(int width, int height, String color) {
+    this.width = width;
+    this.height = height;
+    super(color); // Call to superclass constructor after setting width and height
+  }
+}
+```
 
-### Pattern Matching for switch (Finalized) [JEP 441]
 
-Pattern matching for switch is now **a standard feature**.
-Enables concise and expressive code when working with different types and patterns.
-Supports exhaustive and null-safe handling.
+### Implicitly Declared Classes and Instance Main Methods (JEP 463)
+JEP 463, introduced in Java 22, focuses on simplifying Java's entry point for small programs and scripts by supporting Implicitly Declared Classes and Instance Main Methods.
 
-Check this demo to know more about checks and exhaustive type patterns of sealed classes :
-- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/16b0bc4f-ef2b-421d-9fd6-de3032fb3bbd/3ac60e0c-0d9c-4da9-bedc-0937b2e730da
+Previously, writing even simple Java programs required defining a public class with a static main method. 
+This feature eliminates the need for explicit class declarations in some cases.
+Java code can now directly declare a void main() method as an instance method without defining a class.
 
-And this one to know more about how to use records with the new switch expression :
-- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/16b0bc4f-ef2b-421d-9fd6-de3032fb3bbd/788aeb66-b411-4a7c-aaaa-7e43dc98750b
+Example After Java 22 :
+```java
+void main() {
+    System.out.println("Hello, World!");
+}
+```
+By reducing the complexity of Java's structure, this feature makes Java more approachable for newcomers and suitable for quick scripting tasks.
 
-And a demo here : 
-- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/16b0bc4f-ef2b-421d-9fd6-de3032fb3bbd/a59aad5e-ec59-4bfc-8b29-7fcbd25f9eb7
+This feature is still in the preview stage in Java 22, refining its design and implementation based on developer feedback.
 
-### Virtual Threads (Second Preview) [JEP 436]
+### String Templates (JEP 430, Second Preview) in Java 22
 
-Virtual threads are now standard in Java 21, simplifying concurrent programming by enabling lightweight threads.
+String Templates, introduced in Java 21 and refined in Java 22, are a powerful new feature that simplify the creation of dynamic strings. They integrate string literals and expressions seamlessly, improving readability, maintainability, and reducing common pitfalls like injection vulnerabilities.
 
-**Purpose:** Improve scalability of applications with many concurrent tasks.
+Key Features of String Templates
+- Dynamic String Construction:
+Use embedded expressions directly in strings, eliminating the need for cumbersome concatenation or String.format() calls.
 
-You can check here how the threads works in java until now and what are the downsides of using them :
-- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/245f59b2-6974-4f39-b4a8-294837136b5f/e6838d1a-4ca2-4120-b448-4574cdf89194
+- Syntax:
+A string template starts with the keyword STR and allows the use of ${} to embed expressions.
+example :
+```java
+String name = "Alice";
+String greeting = STR."Hello, ${name}!";
+System.out.println(greeting); // Outputs: Hello, Alice!
+```
+- Compile-Time Safety:
+The template is processed at compile time, ensuring type safety and reducing runtime errors.
 
-The same course will show you :
-- The alternative solutions for non-blocking code
+- Custom Processors:
+String templates support custom processors that can transform or handle the template's content. This is useful for advanced scenarios like SQL query building, localization, or HTML rendering.
 
-What you need to know about asynchronous programming in Java :
-- Hard to code
-- Hard to read
-- Hard to debug
-- Hard to test
-- Hard to maintain
-- Provided by third-party libraries
-
-To resume: 
-
-Virtual threads are lightweight threads that are managed by the JVM, which means that they are not managed by the operating system.
-They are more efficient than the traditional threads because they are not managed by the operating system, so they are not as expensive to create and to run.
-They are also more scalable because you can create millions of them without running out of memory. They are also more predictable because they are not managed by the operating system, so you don't have to worry about the operating system scheduling them.
-They are also more flexible because you can create them in a way that is similar to creating a regular thread, so you don't have to learn a new API.
-
-They are not faster than the traditional threads, but they are more efficient, more scalable, more predictable, and more flexible.
-When creating a virtual thread, it will be mounted on a **Platform Thread**. If it is blocked, it will be unmounted and the platform thread will be reused by another virtual thread.
-It will only be mounted again to continue running when blocking call completes.
-The **Platform Thread** can handle multiple virtual threads on the same time. The number of platform threads is by default the number of available CPU cores.
-
-You can check this to know more about the new virtual threads :
-- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/245f59b2-6974-4f39-b4a8-294837136b5f/6c1d0e49-c409-4128-99be-fb0848fcf8e0
-
-This also means that you should use virtual threads only for tasks where it would perform a healthy amount of blocking operations mixed with CPU heavy operations.
-If all virtual threads **would only run CPU‑intensive, non‑blocking codes,** they would never give up the underlying platform thread and there would be no benefit in using virtual threads. 
-So virtual threads are not magical, faster threads. They do offer a simple model for rising applications with a lot of blocking operations 
-(for example, a web server serving requests and doing calls to other web services in the database to fulfill these requests).
-
-You can check here how to create a virtual thread :
-- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/245f59b2-6974-4f39-b4a8-294837136b5f/1ab51a4b-86b5-457c-91af-595f880dad39
-
-And here is some advice about using virtual threads (like not using Pooling or the use of synchronized keyword or File I/O) :
-- https://app.pluralsight.com/ilx/video-courses/da9fb269-cdaa-4984-9262-330ae78f24a4/245f59b2-6974-4f39-b4a8-294837136b5f/7790dbfb-f1d6-4970-a6cf-5f2973af5fa6
+You can find more about String Templates here :
+- https://medium.com/@viraj_63415/java-21-string-templates-79fd908f30ff
 
 ## Conclusion
 
-Java 21 is an LTS (Long-Term Support) release, which means it will receive extended updates and support (similar to Java 17 and 11).
-
-**Developer Productivity:** Finalization of major features like virtual threads, pattern matching, and record patterns make the language more expressive and scalable.
-
-**Performance and Scalability:** With virtual threads and garbage collector enhancements, Java 21 is better suited for modern, high-throughput applications.
-
-**Summary Table of Features in Java 21**
-
-|Feature|Status|Description|
-|:----|:----|:----|
-|Pattern Matching for switch|Finalized (JEP 441)|Adds powerful and concise pattern matching for switch.|
-|Record Patterns|Finalized (JEP 440)|Decompose records with pattern matching.|
-|Virtual Threads|Finalized (JEP 444)|Lightweight threads for high-concurrency applications.|
-|Sequenced Collections|Standard (JEP 431)|Adds first(), last(), and reversed() to ordered collections.|
-|Foreign Function & Memory API|Finalized (JEP 442)|Interact with native memory and code efficiently.|
-|String Templates|Preview (JEP 430)|Simplifies dynamic string creation using templates.|
-|Scoped Values|Finalized (JEP 439)|Lightweight alternative to thread-local storage.|
-|Structured Concurrency|Incubator (JEP 443)|Simplifies multi-threaded task management.|
-
-Java 21 cements its position as a major step forward for developers with modernized concurrency tools, powerful pattern matching, and finalized experimental features. 
-Its LTS status ensures it will be widely adopted and supported for years to come.
+These changes aim to make Java more expressive, performant, and user-friendly, appealing to modern programming needs.
