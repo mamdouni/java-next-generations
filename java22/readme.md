@@ -34,23 +34,18 @@ Check more about the Scoped Values here :
 https://belief-driven-design.com/looking-at-java-22-stream-gatherers-9485d/
 
 
-### Scoped Values (Finalized) [JEP 439]
+### JEP 453: Structured Concurrency (Preview)
 
-**Purpose:** Provide a lightweight, thread-local alternative for sharing immutable data within a task or thread.
+Structured concurrency aims to simplify the management of asynchronous operations by treating related tasks as a single unit of work.
+This approach enhances readability, error handling, and cancellation management.
+This feature is introduced as an incubator api in java 19 and as a previewed feature in java 21.
 
-```java
-import jdk.incubator.concurrent.ScopedValue;
+Benefits:
+- Improved Readability: Clearly defines the start, execution, and completion of concurrent tasks within a structured block.
+- Streamlined Error Handling: Propagates errors through the entire unit of work, simplifying error management.
+- Enhanced Cancellation: Ensures all tasks within the group are terminated properly when cancellation is requested.
 
-ScopedValue<String> userId = ScopedValue.newInstance();
-
-ScopedValue.where(userId, "12345").run(() -> {
-        System.out.println("User ID: " + userId.get());
-        });
-```
-
-**Benefits:**
-- Simplifies thread-local-like behavior.
-- Better suited for modern, multi-threaded applications.
+- https://openjdk.org/jeps/453
 
 ### Sequenced Collections [JEP 431]
 
