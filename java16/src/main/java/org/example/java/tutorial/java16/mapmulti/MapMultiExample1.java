@@ -1,4 +1,4 @@
-package org.example.java.tutorial.java16;
+package org.example.java.tutorial.java16.mapmulti;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @Slf4j
-public class mapMulti {
+public class MapMultiExample1 {
     public static void main(String[] args) {
         /*
 
