@@ -102,6 +102,7 @@ public class Rectangle extends Shape {
   public Rectangle(int width, int height, String color) {
     this.width = width;
     this.height = height;
+    // you can do some logic here, for example, to determine the color based on the width and height before calling the super constructor
     super(color); // Call to superclass constructor after setting width and height
   }
 }
